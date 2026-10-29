@@ -1,0 +1,109 @@
+
+#:import dp kivy.metrics.dp
+
+# <InicioScreen> es el nombre de la clase de inicio.py: todo lo que está
+# acá abajo (con sangría) es el diseño de esa pantalla.
+# Dentro de este bloque, "root" siempre significa la pantalla (InicioScreen).
+<InicioScreen>:
+    # theme_bg_color: "Custom" avisa que el fondo va a usar un color propio
+    # en lugar del color automático del tema. Sin esta línea, md_bg_color no se aplica.
+    theme_bg_color: "Custom"
+    # md_bg_color es el color de fondo: rojo, verde, azul, transparencia (cada número va de 0 a 1).
+    # Ejemplo: 1, 1, 1, 1 es blanco y 0, 0, 0, 1 es negro.
+    md_bg_color: 0.988, 0.906, 0.953, 1
+
+    # Botón de programadores (abajo a la izquierda)
+    MDButton:
+        # style: "outlined" dibuja el botón solo con borde y sin relleno.
+        style: "outlined"
+        theme_width: "Custom"
+        theme_height: "Custom"
+        # size_hint: None, None desactiva el tamaño proporcional en ancho y alto
+        # para fijar el tamaño exacto con size (ancho, alto).
+        size_hint: None, None
+        size: "64dp", "36dp"
+        radius: [dp(6), dp(6), dp(6), dp(6)]
+        theme_line_color: "Custom"
+        # line_color es el color del borde del botón.
+        line_color: 0.851, 0.310, 0.569, 1
+        # "x": .06 lo separa un 6% del borde izquierdo y "y": .07 lo separa un 7% del borde inferior.
+        pos_hint: {"x": .06, "y": .07}
+        # Al soltar el botón se ejecuta el método ir_a_programadores() de InicioScreen (inicio.py).
+        on_release: root.ir_a_programadores()
+
+        MDButtonText:
+            text: "DEV"
+            pos_hint: {"center_x": .5, "center_y": .5}
+            theme_text_color: "Custom"
+            text_color: 0.851, 0.310, 0.569, 1
+            bold: True
+
+    # Columna centrada con el contenido de la pantalla
+    # MDBoxLayout acomoda a sus hijos uno debajo del otro (orientation: "vertical").
+    MDBoxLayout:
+        orientation: "vertical"
+        # adaptive_height: True hace que su alto sea justo el que ocupan sus hijos.
+        adaptive_height: True
+        # size_hint_x: None desactiva el ancho proporcional para poder fijar un ancho exacto (width).
+        size_hint_x: None
+        width: "320dp"
+        # spacing es el espacio entre un hijo y el siguiente.
+        spacing: "14dp"
+        # center_x y center_y en .5 centran el bloque horizontal y verticalmente.
+        pos_hint: {"center_x": .5, "center_y": .5}
+
+        # MDLabel muestra un texto.
+        MDLabel:
+            text: "¡Bienvenid@!"
+            font_style: "Headline"
+            role: "small"
+            theme_font_size: "Custom"
+            # font_size cambia el tamaño de la letra ("sp" es la unidad de tamaño de texto).
+            font_size: "30sp"
+            bold: True
+            halign: "center"
+            adaptive_height: True
+            padding: 0, 0, 0, "16dp"
+            theme_text_color: "Custom"
+            text_color: 0.851, 0.310, 0.569, 1
+
+        # MDButton es un botón con texto. El texto va en un MDButtonText adentro.
+        MDButton:
+            style: "filled"
+            theme_width: "Custom"
+            theme_height: "Custom"
+            # size_hint: 1, None significa ancho = 100% del contenedor y alto fijo (el de height).
+            size_hint: 1, None
+            height: "48dp"
+            radius: [dp(6), dp(6), dp(6), dp(6)]
+            theme_bg_color: "Custom"
+            md_bg_color: 0.851, 0.310, 0.569, 1
+            # root.ir_a_login() ejecuta el método ir_a_login() de InicioScreen (inicio.py).
+            on_release: root.ir_a_login()
+
+            MDButtonText:
+                text: "Iniciar sesión"
+                pos_hint: {"center_x": .5, "center_y": .5}
+                theme_text_color: "Custom"
+                text_color: 1, 1, 1, 1
+                bold: True
+
+        # MDButton es un botón con texto. El texto va en un MDButtonText adentro.
+        MDButton:
+            style: "filled"
+            theme_width: "Custom"
+            theme_height: "Custom"
+            # size_hint: 1, None significa ancho = 100% del contenedor y alto fijo (el de height).
+            size_hint: 1, None
+            height: "48dp"
+            radius: [dp(6), dp(6), dp(6), dp(6)]
+            theme_bg_color: "Custom"
+            md_bg_color: 0.851, 0.310, 0.569, 1
+            on_release: root.ir_a_registro()
+
+            MDButtonText:
+                text: "Registrarse"
+                pos_hint: {"center_x": .5, "center_y": .5}
+                theme_text_color: "Custom"
+                text_color: 1, 1, 1, 1
+                bold: True

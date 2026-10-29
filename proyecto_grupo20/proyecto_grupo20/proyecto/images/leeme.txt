@@ -1,0 +1,5 @@
+Acá van los logos y las fotos del proyecto.
+
+avatar.png es una foto de relleno. Para poner la foto de cada integrante,
+copien las fotos en esta carpeta y cambien el nombre del archivo en
+programadores/programadores.py (lista INTEGRANTES).

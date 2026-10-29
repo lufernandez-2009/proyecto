@@ -1,0 +1,182 @@
+#:import dp kivy.metrics.dp
+
+# <RegistroScreen> es el nombre de la clase de registro.py: todo lo que está
+# acá abajo (con sangría) es el diseño de esa pantalla.
+# Dentro de este bloque, "root" siempre significa la pantalla (RegistroScreen).
+<RegistroScreen>:
+    # theme_bg_color: "Custom" avisa que el fondo va a usar un color propio
+    # en lugar del color automático del tema. Sin esta línea, md_bg_color no se aplica.
+    theme_bg_color: "Custom"
+    # md_bg_color es el color de fondo, escrito como: rojo, verde, azul, transparencia.
+    # Cada número va de 0 a 1. Ejemplo: 1, 1, 1, 1 es blanco y 0, 0, 0, 1 es negro.
+    md_bg_color: 0.988, 0.906, 0.953, 1
+
+    # Flecha para volver (arriba a la izquierda)
+    # MDIconButton es un botón que muestra solo un ícono.
+    MDIconButton:
+        # icon es el nombre del ícono, tal como aparece en https://pictogrammers.com/library/mdi/
+        icon: "arrow-left"
+        # pos_hint ubica el widget con porcentajes de la pantalla (0 a 1):
+        # "x": .05 lo separa un 5% del borde izquierdo y "top": .92 deja su borde superior al 92% de la altura.
+        pos_hint: {"x": .05, "top": .92}
+        # theme_icon_color: "Custom" permite usar un color propio para el ícono...
+        theme_icon_color: "Custom"
+        # ...y icon_color es ese color (rojo, verde, azul, transparencia).
+        icon_color: 0.851, 0.310, 0.569, 1
+        # on_release es lo que pasa cuando se suelta el botón después de tocarlo.
+        # root.volver() ejecuta el método volver() de la clase RegistroScreen (en registro.py).
+        on_release: root.volver()
+
+    # Columna centrada con el contenido de la pantalla
+    # MDBoxLayout acomoda a sus hijos uno debajo del otro (orientation: "vertical").
+    MDBoxLayout:
+        orientation: "vertical"
+        # adaptive_height: True hace que su alto sea justo el que ocupan sus hijos.
+        adaptive_height: True
+        # size_hint_x: None desactiva el ancho proporcional para poder fijar un ancho exacto...
+        size_hint_x: None
+        # ...que se escribe en width ("dp" es una unidad de medida independiente de la pantalla).
+        width: "320dp"
+        # spacing es el espacio entre un hijo y el siguiente.
+        spacing: "14dp"
+        # center_x y center_y en .5 centran el bloque horizontal y verticalmente.
+        pos_hint: {"center_x": .5, "center_y": .5}
+
+        # MDLabel muestra un texto.
+        MDLabel:
+            # text es el texto que se muestra.
+            text: "Crear una cuenta"
+            # font_style y role eligen el tamaño base de letra entre los estilos de KivyMD.
+            font_style: "Headline"
+            role: "small"
+            # theme_font_size: "Custom" permite que font_size reemplace el tamaño del estilo.
+            theme_font_size: "Custom"
+            font_size: "30sp"
+            # bold: True pone el texto en negrita.
+            bold: True
+            # halign es la alineación horizontal del texto: "left", "center" o "right".
+            halign: "center"
+            adaptive_height: True
+            # padding agrega espacio interno: izquierda, arriba, derecha, abajo.
+            padding: 0, 0, 0, "16dp"
+            # theme_text_color: "Custom" permite usar un color propio para el texto...
+            theme_text_color: "Custom"
+            # ...y text_color es ese color (rojo, verde, azul, transparencia).
+            text_color: 0.851, 0.310, 0.569, 1
+
+        # MDTextField es un campo donde el usuario escribe.
+        MDTextField:
+            # id es un nombre para poder encontrar este campo desde el código Python
+            # (por ejemplo, self.ids.nombre.text devuelve lo que se escribió).
+            id: nombre
+            # mode: "filled" dibuja el campo con el fondo relleno.
+            mode: "filled"
+            size_hint_y: None
+            height: "56dp"
+            # radius redondea las esquinas (una por cada esquina).
+            radius: [dp(8), dp(8), dp(8), dp(8)]
+            theme_bg_color: "Custom"
+            # fill_color_normal es el color de relleno normal y fill_color_focus el que tiene
+            # cuando el usuario hizo clic adentro para escribir.
+            fill_color_normal: .95, .95, .96, 1
+            fill_color_focus: .92, .93, .95, 1
+            theme_line_color: "Custom"
+            # line_color_normal y line_color_focus son los colores de la línea inferior del campo.
+            # Con transparencia 0 (último número) no se ve.
+            line_color_normal: 0, 0, 0, 0
+            line_color_focus: 0.851, 0.310, 0.569, 1
+
+            # MDTextFieldHintText es el texto de ayuda que se ve dentro del campo vacío.
+            MDTextFieldHintText:
+                text: "Nombre completo"
+                theme_text_color: "Custom"
+                # text_color_normal es el color del texto de ayuda en reposo y
+                # text_color_focus el que toma cuando se hace clic en el campo.
+                text_color_normal: .55, .55, .55, 1
+                text_color_focus: 0.851, 0.310, 0.569, 1
+
+        MDTextField:
+            id: edad
+            mode: "filled"
+            size_hint_y: None
+            height: "56dp"
+            radius: [dp(8), dp(8), dp(8), dp(8)]
+            theme_bg_color: "Custom"
+            fill_color_normal: .95, .95, .96, 1
+            fill_color_focus: .92, .93, .95, 1
+            theme_line_color: "Custom"
+            line_color_normal: 0, 0, 0, 0
+            line_color_focus: 0.851, 0.310, 0.569, 1
+            # input_filter: "int" hace que el campo solo acepte números enteros.
+            input_filter: "int"
+
+            MDTextFieldHintText:
+                text: "Edad"
+                theme_text_color: "Custom"
+                text_color_normal: .55, .55, .55, 1
+                text_color_focus: 0.851, 0.310, 0.569, 1
+
+        MDTextField:
+            id: correo
+            mode: "filled"
+            size_hint_y: None
+            height: "56dp"
+            radius: [dp(8), dp(8), dp(8), dp(8)]
+            theme_bg_color: "Custom"
+            fill_color_normal: .95, .95, .96, 1
+            fill_color_focus: .92, .93, .95, 1
+            theme_line_color: "Custom"
+            line_color_normal: 0, 0, 0, 0
+            line_color_focus: 0.851, 0.310, 0.569, 1
+
+            MDTextFieldHintText:
+                text: "Correo"
+                theme_text_color: "Custom"
+                text_color_normal: .55, .55, .55, 1
+                text_color_focus: 0.851, 0.310, 0.569, 1
+
+        MDTextField:
+            id: contrasena
+            mode: "filled"
+            size_hint_y: None
+            height: "56dp"
+            radius: [dp(8), dp(8), dp(8), dp(8)]
+            theme_bg_color: "Custom"
+            fill_color_normal: .95, .95, .96, 1
+            fill_color_focus: .92, .93, .95, 1
+            theme_line_color: "Custom"
+            line_color_normal: 0, 0, 0, 0
+            line_color_focus: 0.851, 0.310, 0.569, 1
+            # password: True muestra puntos en lugar de las letras que se escriben.
+            password: True
+
+            MDTextFieldHintText:
+                text: "Contraseña"
+                theme_text_color: "Custom"
+                text_color_normal: .55, .55, .55, 1
+                text_color_focus: 0.851, 0.310, 0.569, 1
+
+        # MDButton es un botón con texto. El texto va en un MDButtonText adentro.
+        MDButton:
+            # style: "filled" lo dibuja con el fondo relleno ("outlined" lo dibuja solo con borde).
+            style: "filled"
+            # theme_width y theme_height en "Custom" permiten fijar el ancho y el alto propios.
+            theme_width: "Custom"
+            theme_height: "Custom"
+            # size_hint: 1, None significa ancho = 100% del contenedor y alto fijo (el de height).
+            size_hint: 1, None
+            height: "48dp"
+            radius: [dp(6), dp(6), dp(6), dp(6)]
+            theme_bg_color: "Custom"
+            # md_bg_color es el color de fondo del botón.
+            md_bg_color: 0.851, 0.310, 0.569, 1
+            # Al soltar el botón se ejecuta el método registrar() de la clase RegistroScreen (registro.py).
+            on_release: root.registrar()
+
+            MDButtonText:
+                text: "Registrarse"
+                # center_x y center_y en .5 centran el texto dentro del botón.
+                pos_hint: {"center_x": .5, "center_y": .5}
+                theme_text_color: "Custom"
+                text_color: 1, 1, 1, 1
+                bold: True

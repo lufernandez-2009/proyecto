@@ -1,0 +1,2 @@
+Esta carpeta queda vacía por ahora.
+En la clase 3 va a tener el archivo con la conexión a MySQL.

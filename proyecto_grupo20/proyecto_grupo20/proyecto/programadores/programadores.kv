@@ -1,0 +1,84 @@
+
+#:import dp kivy.metrics.dp
+
+<TarjetaIntegrante>:
+    style: "outlined"
+    size_hint_y: None
+    height: "68dp"
+    padding: "14dp", "10dp"
+    spacing: "12dp"
+    radius: [dp(8), dp(8), dp(8), dp(8)]
+    theme_bg_color: "Custom"
+    md_bg_color: 1, 1, 1, 1
+    theme_line_color: "Custom"
+    line_color: .88, .88, .88, 1
+
+    FitImage:
+        source: root.foto
+        size_hint: None, None
+        size: "40dp", "40dp"
+        radius: [dp(20), dp(20), dp(20), dp(20)]
+        pos_hint: {"center_y": .5}
+
+    MDBoxLayout:
+        orientation: "vertical"
+        adaptive_height: True
+        pos_hint: {"center_y": .5}
+
+        MDLabel:
+            text: root.nombre
+            font_style: "Body"
+            role: "medium"
+            bold: True
+            adaptive_height: True
+
+        MDLabel:
+            text: root.curso
+            font_style: "Body"
+            role: "small"
+            adaptive_height: True
+            theme_text_color: "Custom"
+            text_color: .55, .55, .55, 1
+
+
+<ProgramadoresScreen>:
+    # Fondo blanco
+    theme_bg_color: "Custom"
+    md_bg_color: 0.988, 0.906, 0.953, 1
+
+    # Flecha para volver (arriba a la izquierda)
+    MDIconButton:
+        icon: "arrow-left"
+        pos_hint: {"x": .05, "top": .92}
+        theme_icon_color: "Custom"
+        icon_color: 0.851, 0.310, 0.569, 1
+        on_release: root.volver()
+
+    # Columna centrada con el contenido de la pantalla
+    MDBoxLayout:
+        orientation: "vertical"
+        adaptive_height: True
+        size_hint_x: None
+        width: "320dp"
+        spacing: "14dp"
+        pos_hint: {"center_x": .5, "center_y": .5}
+
+        MDLabel:
+            text: "Programadores"
+            font_style: "Headline"
+            role: "small"
+            theme_font_size: "Custom"
+            font_size: "30sp"
+            bold: True
+            halign: "center"
+            adaptive_height: True
+            padding: 0, 0, 0, "16dp"
+            theme_text_color: "Custom"
+            text_color: 0.851, 0.310, 0.569, 1
+
+        # Acá se agregan las tarjetas de los integrantes (ver programadores.py)
+        MDBoxLayout:
+            id: lista
+            orientation: "vertical"
+            adaptive_height: True
+            spacing: "12dp"
